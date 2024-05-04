@@ -1,0 +1,483 @@
+@charset "UTF-8";
+:root{
+    --maincolor : rgb(240,240,240);
+    --subcolor1 : rgb(242,255,83);
+    --subcolor2 : rgb(236,96,108);
+    --subcolor21 : rgba(236,96,108,0.5);
+}
+
+#loading {
+  width: 100vw;
+  height: 100vh;
+  transition: all 1s;
+  background-color: var(--subcolor1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+}
+.spinner {
+  width: 100px;
+  height: 100px;
+  margin: 200px auto;
+  background-color: var(--subcolor2);
+  border-radius: 100%;
+  animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+.loaded {
+  opacity: 0;
+  visibility: hidden;
+}
+/* ローディングアニメーション */
+@keyframes sk-scaleout {
+  0% {
+    transform: scale(0);
+  } 100% {
+    transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+/*========= humberger start ===============*/
+#g-nav{
+  /*position:fixed;にし、z-indexの数値を小さくして最背面へ*/
+  position:fixed;
+z-index: -1;
+opacity: 0;/*はじめは透過0*/
+  /*ナビの位置と形状*/
+top:0;
+width:100%;
+  height: 100vh;/*ナビの高さ*/
+background:#999;
+  /*動き*/
+transition: all 0.3s;
+}
+
+/*アクティブクラスがついたら透過なしにして最前面へ*/
+#g-nav.panelactive{
+opacity: 1;
+z-index:999;
+}
+
+/*ナビゲーションの縦スクロール*/
+#g-nav.panelactive #g-nav-list{
+  /*ナビの数が増えた場合縦スクロール*/
+  position: fixed;
+  z-index: 999; 
+  width: 100%;
+  height: 100vh;/*表示する高さ*/
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/*ナビゲーション*/
+#g-nav ul {
+  display: none;
+  /*ナビゲーション天地中央揃え*/
+  position: absolute;
+  z-index: 999;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+
+#g-nav.panelactive ul {
+  display: block;
+}
+
+/*リストのレイアウト設定*/
+
+#g-nav li{
+list-style: none;
+  text-align: center; 
+}
+
+#g-nav li a{
+color: #333;
+text-decoration: none;
+padding:10px;
+display: block;
+text-transform: uppercase;
+letter-spacing: 0.1em;
+font-weight: bold;
+}
+
+/*========= ボタンのためのCSS ===============*/
+.openbtn1{
+position:fixed;
+  z-index: 9999;/*ボタンを最前面に*/
+top:10px;
+right: 10px;
+cursor: pointer;
+  width: 50px;
+  height:50px;
+}
+
+/*×に変化*/  
+.openbtn1 span{
+  display: inline-block;
+  transition: all .4s;
+  position: absolute;
+  left: 14px;
+  height: 3px;
+  border-radius: 2px;
+background-color: #666;
+  width: 45%;
+}
+
+.openbtn1 span:nth-of-type(1) {
+top:15px; 
+}
+
+.openbtn1 span:nth-of-type(2) {
+top:23px;
+}
+
+.openbtn1 span:nth-of-type(3) {
+top:31px;
+}
+
+.openbtn1.active span:nth-of-type(1) {
+  top: 18px;
+  left: 18px;
+  transform: translateY(6px) rotate(-45deg);
+  width: 30%;
+}
+
+.openbtn1.active span:nth-of-type(2) {
+opacity: 0;
+}
+
+.openbtn1.active span:nth-of-type(3){
+  top: 30px;
+  left: 18px;
+  transform: translateY(-6px) rotate(45deg);
+  width: 30%;
+}
+
+/*========= humberger end ===============*/
+
+
+/* font ゴシック(Zen Kaku Gothic New)，明朝(https://fonts.google.com/selection?subset=japanese&noto.script=Hira)，英語(https://fonts.google.com/selection/embed) */
+.zen-kaku-gothic-new-light {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.zen-kaku-gothic-new-regular {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.zen-kaku-gothic-new-medium {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.zen-kaku-gothic-new-bold {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.zen-kaku-gothic-new-black {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+.hina-mincho-regular {
+  font-family: "Hina Mincho", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.sedan-sc-regular {
+font-family: "Sedan SC", serif;
+font-weight: 400;
+font-style: normal;
+}
+
+/*===================== ここから ========================================*/
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: var(--subcolor1);
+}
+
+a{
+    text-decoration: none;
+    display: block;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+h1{
+  font-family: "Sedan SC", serif;
+    display: flex;
+}
+
+h2{
+  font-weight: 500;
+  text-align: center;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  padding-top: 20px;
+}
+
+p{
+  font-size: 1rem;
+  font-family: "Kosugi", sans-serif;
+}
+
+ul{
+  list-style: none;
+}
+
+.top-img{
+  width: 100vw;
+  height: auto;
+}
+
+
+/*================= effect ==================*/
+.blur{
+  transition: all 0.5s;
+  filter: blur(10px);
+  &.scrollin{
+    filter: blur(0);
+  }
+}
+
+/*----------------------------
+scroll_up ｜下から上へ出現
+----------------------------*/
+.scroll_up {
+  transition: 0.8s ease-in-out;
+  transform: translateY(30px);
+  opacity: 0;
+}
+.scroll_up.on {
+  transform: translateY(0);
+  opacity: 1.0;
+}
+
+/*----------------------------
+scroll_left ｜左から出現
+----------------------------*/
+.scroll_left {
+    -webkit-transition: 0.8s ease-in-out;
+    -moz-transition: 0.8s ease-in-out;
+    -o-transition: 0.8s ease-in-out;
+    transition: 0.8s ease-in-out;
+    transform: translateX(-30px);
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+}
+.scroll_left.on {
+    opacity: 1.0;
+    filter: alpha(opacity=100);
+    -moz-opacity: 1.0;
+    transform: translateX(0);
+}
+
+/*----------------------------
+scroll_right ｜右から出現
+----------------------------*/
+.scroll_right {
+    -webkit-transition: 0.8s ease-in-out;
+    -moz-transition: 0.8s ease-in-out;
+    -o-transition: 0.8s ease-in-out;
+    transition: 0.8s ease-in-out;
+    transform: translateX(30px);
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+}
+.scroll_right.on {
+    opacity: 1.0;
+    filter: alpha(opacity=100);
+    -moz-opacity: 1.0;
+    transform: translateX(0);
+}
+
+
+
+
+/*================= sns ==================*/
+.sns {
+  height: 5vh;
+  background-color: black;
+}
+
+.sns-icons {
+  height: 5vh;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 0; /* 余白の調整 */
+  margin: 0; /* 余白の調整 */
+}
+
+.sns-icons li {
+  display: flex;
+  width: 33.333%; /* 3つのアイコンが均等にスペースを占めるように */
+  justify-content: center;
+  align-items: center;
+}
+
+.sns-icons a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: var(--maincolor);
+  font-size: 1.4rem;
+  border: var(--subcolor21) solid 1px;
+  text-decoration: none;
+}
+
+
+/*================= youtube ==================*/
+.youtube {
+  background-color: var(--subcolor1);
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9のアスペクト比 */
+}
+.youtube iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none; /* フレームボーダーを非表示に */
+}
+
+/*================= introduction ==================*/
+.introduction,.cast,.staff{
+  background-color: var(--subcolor1);
+    width: 100%;
+    padding: 5% 0;
+}
+.introduction-title,.cast-title,.staff-title{
+  font-size: 4rem;
+  text-align: center;
+}
+
+.introduction-title::before,
+.introduction-title::after,
+.cast-title::before,
+.cast-title::after,
+.staff-title::before,
+.staff-title::after{
+  flex: 1;
+  height: 2px;
+  content: '';
+  background-color: var(--subcolor2);
+  position: relative;
+  top: 2.1rem;
+}
+.introduction-title::before,
+.cast-title::before,
+.staff-title::before{
+  margin-right: 0.5em;
+}
+.introduction-title::after,
+.cast-title::after,
+.staff-title::after{
+  margin-left: 0.5em;
+}
+
+/*================= bg ==================*/
+.bg {
+  z-index: -1;
+	background: url(/images/bg.webp);
+	background-size: cover;
+	background-attachment: fixed;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+  overflow: hidden;
+}
+
+/*================= cast ==================*/
+
+.cast{
+  margin-top: 40vh;
+}
+
+.cast-name{
+  font-size: 3.3rem;
+  text-align: left;
+  margin-left: 5%;
+  margin-bottom: 1vw;;
+}
+.cast-position{
+  margin-left: 7%;
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.cast-img,.cast-text,.introduction-text{
+  width: 90%;
+  margin: auto;
+}
+
+.cast-item{
+  padding-bottom: 10%;
+}
+
+/*================= staff ==================*/
+
+.staff-item{
+  margin-bottom: 10%;
+}
+.staff-name{
+  font-size: 3rem;
+  font-weight: 500;
+}
+.staff-position{
+  margin-top: 3rem;
+  margin-left: .5rem;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.staff-item-wrapper{
+  display: flex;
+  margin-left: 7vw;
+}
+
+.staff-img,.staff-text,.staff-text{
+  width: 90%;
+  margin: auto;
+}
+
+.staff-text{
+  margin: auto;
+}
+
+/*================= footer ==================*/
+.footer {
+  padding: 2rem;
+  font-size: 15px;
+  color: black;
+  background: var(--subcolor2);
+  border-top: 1px solid #e5e7eb;
+}
+
+.copyright{
+  text-align: center;
+  margin-bottom: 3%;
+}
